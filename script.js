@@ -684,3 +684,31 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.key === "Escape") closeModal();
     });
 });
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const burgerBtn = document.querySelector('.burger-menu-btn');
+    const closeBtn = document.querySelector('.close-menu-btn');
+    const mobileNav = document.querySelector('.mobile-nav-overlay');
+
+    if (burgerBtn && mobileNav) {
+        burgerBtn.addEventListener('click', () => {
+            console.log('Кликнато на бургер!');
+            mobileNav.classList.add('active');
+        });
+    }
+
+    if (closeBtn && mobileNav) {
+        closeBtn.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+        });
+    }
+});

@@ -159,6 +159,557 @@ body {
     }
 }
 
+
+// 1. HERO СЕКЦИЈА
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(3, 23, 12, 0.3), rgba(3, 23, 12, 0.6)), 
+                url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80') center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 4%;
+    color: $white;
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            font-family: $font-serif;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            
+            a {
+                color: $white;
+                text-decoration: none;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                font-weight: 500;
+                opacity: 0.8;
+                &.active, &:hover { opacity: 1; }
+            }
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 0.85rem;
+
+            .btn-nav-cta {
+                background: $dark-forest;
+                color: $white;
+                text-decoration: none;
+                padding: 10px 24px;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+        }
+    
+    /* МОБИЛНА ОПТИМИЗАЦИЈА (Тука ги сечеме десктоп елементите) */
+@media (max-width: 900px) {
+    .navbar {
+        padding: 20px 4% !important;
+    }
+
+    // 1. Скриј ги десктоп линковите и десниот дел СИТЕ ЗАЕДНО
+    .nav-links, 
+    .nav-right {
+        display: none !important;
+    }
+
+    // 2. Осигурај се дека бургер копчето е видливо и десно
+    .burger-menu-btn {
+        display: flex !important;
+        margin-left: auto; // Ова го турка скроз десно
+    }
+}
+
+/* ДЕСКТОП - ЗАДОЛЖИТЕЛНО (За да не се појавува бургерот) */
+@media (min-width: 901px) {
+    .burger-menu-btn {
+        display: none !important; // Бургерот НЕМА место на десктоп
+    }
+}
+    
+    }
+
+    .hero-content {
+        max-width: 680px;
+        margin-top: auto;
+        margin-bottom: auto;
+
+        .hero-tag {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: $font-serif;
+            font-size: 6rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            line-height: 1;
+            i { font-style: italic; }
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+        }
+    }
+
+    .hero-footer {
+        text-align: center;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        opacity: 0.7;
+    }
+}
+
+// 2. СЕКЦИЈА РЕГИОН (СПЛИТ РАСПОРЕД)
+.split-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: flex-start;
+    padding-bottom: 40px;
+
+    .stats-row {
+        display: flex;
+        gap: 60px;
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+        .stat-item {
+            h3 {
+                font-family: $font-serif;
+                font-size: 2.5rem;
+                font-weight: 400;
+                color: $dark-forest;
+            }
+            span {
+                font-size: 0.75rem;
+                color: $text-muted;
+                letter-spacing: 1px;
+                display: block;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+// 3. ТРИТЕ НАМАЛЕНИ КАРТИЧКИ (КОМПАКТНИ)
+.section-cards {
+    padding-top: 0;
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        padding-top: 0;
+    }
+
+    .compact-card {
+        position: relative;
+        height: 480px; // Намалена висина за поелегантен компактен изглед
+        border-radius: 4px;
+        overflow: hidden;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(3, 23, 12, 0.85));
+            color: $white;
+
+            .card-tag {
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+                opacity: 0.8;
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            h4 {
+                font-family: $font-serif;
+                font-size: 1.8rem;
+                font-weight: 400;
+            }
+        }
+
+        &:hover img {
+            transform: scale(1.04);
+        }
+    }
+}
+
+// 4. СЕКЦИЈА ВОДОПАДИ
+.cascade-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 100px;
+    align-items: center;
+
+    .specs-row {
+        display: flex;
+        gap: 40px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(0,0,0,0.08);
+
+        .spec-item {
+            border-right: 1px solid rgba(0,0,0,0.08);
+            padding-right: 40px;
+            &:last-child { border: none; }
+
+            h4 {
+                font-family: $font-serif;
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: $dark-forest;
+            }
+            span {
+                font-size: 0.75rem;
+                color: $text-muted;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    .cascade-image img {
+        width: 100%;
+        height: 580px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+}
+
+// 5. ТЕМНА ХРОНИКА СЕКЦИЈА
+.section-chronology {
+    background-color: $dark-forest;
+    color: $white;
+
+    .chronology-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 80px;
+
+        .btn-timeline-link {
+            color: $white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 5px;
+            font-weight: 600;
+        }
+    }
+
+    .chronology-timeline {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+
+        .timeline-column {
+            .timeline-tag {
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+                color: $accent-teal;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 20px;
+
+                .dot {
+                    width: 6px;
+                    height: 6px;
+                    background-color: $accent-teal;
+                    border-radius: 50%;
+                }
+            }
+
+            h4 {
+                font-family: $font-serif;
+                font-size: 1.6rem;
+                font-weight: 400;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 0.9rem;
+                opacity: 0.7;
+                line-height: 1.5;
+            }
+        }
+    }
+}
+
+// 6. СЕКЦИЈА СЕЗОНИ
+.section-seasons {
+    .seasons-track {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 50px;
+
+        .season-img img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+    }
+}
+
+// 7. СЕКЦИЈА ВКУС (МЕД)
+.section-taste {
+    .taste-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 100px;
+        align-items: center;
+    }
+
+    .taste-image img {
+        width: 100%;
+        height: 520px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .taste-tabs {
+        display: flex;
+        gap: 12px;
+        margin-top: 40px;
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 10px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: $font-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+
+            &.active, &:hover {
+                background-color: rgba(0,0,0,0.03);
+                border-color: $dark-forest;
+            }
+        }
+    }
+}
+
+// 8. ТРИТЕ БЕЛИ КАРТИЧКИ
+.section-tools {
+    background-color: rgba(0, 0, 0, 0.01);
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .tool-card {
+        background-color: $white;
+        padding: 50px 40px;
+        border-radius: 4px;
+        border: 1px solid rgba(0,0,0,0.04);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+
+        .tool-icon {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: $accent-teal;
+        }
+
+        h3 {
+            font-family: $font-serif;
+            font-size: 1.9rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: $dark-forest;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: $text-muted;
+            margin-bottom: 35px;
+        }
+
+        .tool-link {
+            color: $dark-forest;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+// 9. ЦИТАТ БАНЕР
+.section-quote-banner {
+    background: linear-gradient(rgba(3,23,12,0.4), rgba(3,23,12,0.6)), 
+                url('https://images.unsplash.com/photo-1472214222541-d510753a4907?auto=format&fit=crop&w=1920&q=80') center/cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $white;
+
+    .quote-content {
+        .quote-tag {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: $font-serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            i { font-style: italic; }
+        }
+    }
+}
+
+// 10. ФУТЕР
+.footer {
+    background-color: #020F08;
+    color: $white;
+    
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 80px;
+    }
+
+    .footer-left {
+        h2 {
+            font-family: $font-serif;
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            i { font-style: italic; }
+        }
+
+        p {
+            font-size: 0.95rem;
+            opacity: 0.6;
+            max-width: 480px;
+            margin-bottom: 40px;
+        }
+
+        .newsletter-wrap {
+            display: flex;
+            max-width: 450px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            padding: 4px;
+
+            input {
+                background: transparent;
+                border: none;
+                padding: 14px 25px;
+                color: $white;
+                flex: 1;
+                font-size: 0.9rem;
+                outline: none;
+                &::placeholder { color: rgba(255,255,255,0.4); }
+            }
+
+            button {
+                background-color: $bg-cream;
+                color: $dark-forest;
+                border: none;
+                padding: 0 28px;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .footer-links-col {
+        h4 {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            opacity: 0.4;
+            margin-bottom: 25px;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            a {
+                color: $white;
+                text-decoration: none;
+                font-size: 0.95rem;
+                opacity: 0.8;
+                font-family: $font-serif;
+                font-size: 1.15rem;
+                &:hover { opacity: 1; }
+            }
+        }
+
+        .email-link {
+            font-family: $font-sans !important;
+            font-size: 0.95rem !important;
+            opacity: 0.6;
+        }
+    }
+}
+
+// Елегантен одговор на мобилни уреди
+@media (max-width: 1024px) {
+    .split-layout, .cascade-grid, .taste-grid, .chronology-timeline, .tools-grid, .footer-grid, .section-seasons .seasons-track, .section-cards .cards-container {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+    .hero h1 { font-size: 4rem !important; }
+    .section-title { font-size: 2.5rem !important; }
+}
+
 // --- СТИЛОВИ ЗА СТРАНИЦАТА АТРАКЦИИ (EDITORIAL GRID & POPUP) ---
 
 .atrakcii-hero {
@@ -2523,4 +3074,111 @@ $white: #FFFFFF;
   .modal-layout-split { flex-direction: column; height: auto !important; }
   .modal-gallery-side { height: 260px; flex: none; }
   .modal-info-side { padding: 30px 20px; flex: none; height: auto !important; }
+}
+// 1. БУРГЕР КОПЧЕ (Дефиниција)
+.burger-menu-btn {
+    display: none; // Скриено на десктоп
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+    
+    span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background-color: $white;
+        margin: 3px 0;
+    }
+}
+
+// 2. МОБИЛЕН ОВЕРЛЕЈ (Скриен на десктоп!)
+.mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #03170C;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    
+    // ОВА Е КЛУЧНО: Скриено на десктоп
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .close-menu-btn {
+        position: absolute;
+        top: 30px;
+        right: 5%;
+        color: white;
+        font-size: 30px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .nav-links-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        
+        a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: #ede0cc;
+            text-decoration: none;
+        }
+    }
+}
+
+// 3. MEDIA QUERY - Само за мобилен
+@media (max-width: 900px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between; // Лого лево, Бургер десно
+        align-items: center;
+        width: 100%;
+        padding: 20px 4% !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+    }
+
+    .burger-menu-btn {
+        display: flex !important; // Секогаш видливо на мобилен
+        margin-left: auto;       // Ова го турка копчето скроз десно
+        margin-right: 0;         // Нема простор десно
+        position: static;        // Веќе не е absolute, туку дел од flex
+    }
+
+    .logo {
+        position: static;        // Логото си останува лево по дифолт
+    }
+}
+// Ова додај го во твојот SCSS
+@media (max-width: 900px) {
+    // Кога оверлејот е активен, бургер копчето мора да се тргне/скрие
+    .mobile-nav-overlay.active + .navbar .burger-menu-btn {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    // Исто така, осигури се дека оверлејот е секогаш над копчето
+    .mobile-nav-overlay {
+        z-index: 20000; // Повисоко од копчето (копчето беше 10001)
+    }
 }
