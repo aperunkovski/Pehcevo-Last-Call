@@ -1,0 +1,2526 @@
+// ПРЕМИУМ ПАЛЕТА НА БОИ
+$bg-cream: oklch(96.5% .012 85);
+$dark-forest: #03170C;
+$accent-teal: #0D9488;
+$text-dark: #1F2937;
+$text-muted: #6B7280;
+$white: #FFFFFF;
+
+// ТИПОГРАФИЈА
+$font-serif: 'Cormorant Garamond', serif;
+$font-sans: 'Inter', sans-serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-sans;
+    background-color: $bg-cream;
+    color: $text-dark;
+    line-height: 1.6;
+    overflow-x: hidden;
+    
+    // Автоматско прилагодување на навигацијата кога сме на страницата со атракции
+    &.bg-cream {
+        .navbar {
+            background-color: rgba(250, 248, 245, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(3, 23, 12, 0.05);
+            
+            .logo, .nav-links a {
+                color: $dark-forest;
+            }
+            .nav-links a.active {
+                border-bottom: 1px solid $dark-forest;
+            }
+        }
+    }
+}
+
+// ГЛОБАЛНИ КОНТЕЈНЕРИ И ЕЛЕМЕНТИ
+.container-fluid, .container-fluid-atrakcii {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 4%;
+}
+
+.container-fluid-atrakcii {
+    max-width: 1300px; // Малку потесен фокус за уреднички изглед на атракциите
+}
+
+.section-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $accent-teal;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: $font-serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: $dark-forest;
+    
+    i { font-style: italic; }
+}
+
+.text-block {
+    font-size: 1.05rem;
+    color: $text-muted;
+    max-width: 540px;
+}
+
+// УНИВЕРЗАЛНИ КОПЧИЊА
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+
+    &.btn-cream {
+        background-color: $bg-cream;
+        color: $dark-forest;
+        &:hover { background-color: rgba(250,248,245, 0.9); }
+    }
+
+    &.btn-outline {
+        border: 1px solid rgba(255,255,255,0.4);
+        color: $white;
+        &:hover { border-color: $white; background-color: rgba(255,255,255,0.05); }
+    }
+}
+
+// НАВИГАЦИЈА (Заедничка)
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 4%;
+    z-index: 100;
+    transition: all 0.4s ease;
+
+    .logo {
+        font-family: $font-serif;
+        font-size: 2rem;
+        font-weight: 500;
+        color: $white;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 35px;
+        
+        a {
+            color: $white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+            opacity: 0.8;
+            padding-bottom: 4px;
+            transition: opacity 0.3s;
+            &.active, &:hover { opacity: 1; }
+        }
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        font-size: 0.85rem;
+        color: $white;
+
+        .btn-nav-cta {
+            background: $dark-forest;
+            color: $white;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+// --- СТИЛОВИ ЗА СТРАНИЦАТА АТРАКЦИИ (EDITORIAL GRID & POPUP) ---
+
+.atrakcii-hero {
+    padding-top: 180px;
+    padding-bottom: 60px;
+
+    .editorial-title {
+        font-family: $font-serif;
+        font-size: 4.8rem;
+        font-weight: 400;
+        line-height: 1.05;
+        color: $dark-forest;
+        margin-bottom: 25px;
+        
+        i { font-style: italic; }
+    }
+
+    .editorial-subtitle {
+        font-size: 1.15rem;
+        color: $text-muted;
+        max-width: 620px;
+        line-height: 1.6;
+    }
+}
+
+.section-grid-atrakcii {
+    padding-bottom: 140px;
+
+    .attractions-masonry {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: flex-start;
+    }
+
+    .masonry-column {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+
+        // Точното асиметрично поместување од сликата
+        &.col-right {
+            margin-top: 120px;
+        }
+    }
+
+    .attraction-card {
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+        .card-image-wrapper {
+            width: 100%;
+            height: 540px; 
+            overflow: hidden;
+            border-radius: 2px;
+            background-color: #E5E7EB;
+            margin-bottom: 22px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            }
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(3, 23, 12, 0.08);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+
+            .tag {
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 1.5px;
+                color: $accent-teal;
+            }
+
+            .details {
+                font-size: 0.75rem;
+                color: #9CA3AF;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        h3 {
+            font-family: $font-serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: $dark-forest;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: $text-muted;
+            line-height: 1.55;
+            max-width: 92%;
+        }
+
+        &:hover {
+            transform: translateY(-6px);
+            .card-image-wrapper img {
+                transform: scale(1.03);
+            }
+        }
+    }
+}
+
+// ЕЛЕГАНТЕН ПОП-АП (EDITORIAL MODAL)
+.editorial-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+
+    &.open {
+        opacity: 1;
+        pointer-events: auto;
+        
+        .modal-window {
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    .modal-backdrop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(3, 23, 12, 0.4);
+        backdrop-filter: blur(8px);
+    }
+
+    .modal-window {
+        position: relative;
+        background-color: $bg-cream;
+        width: 92%;
+        max-width: 1050px;
+        max-height: 85vh;
+        border-radius: 4px;
+        overflow-y: auto;
+        z-index: 1001;
+        box-shadow: 0 30px 60px rgba(3, 23, 12, 0.15);
+        transform: scale(0.96) translateY(20px);
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(3, 23, 12, 0.2);
+            border-radius: 10px;
+        }
+    }
+
+    .modal-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        background: transparent;
+        border: none;
+        font-size: 2.8rem;
+        cursor: pointer;
+        color: $dark-forest;
+        z-index: 1002;
+        line-height: 1;
+        opacity: 0.5;
+        transition: opacity 0.2s;
+        &:hover { opacity: 1; }
+    }
+
+    .modal-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        align-items: stretch;
+    }
+
+    .modal-image-col {
+        position: relative;
+        min-height: 550px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .modal-text-col {
+        padding: 60px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .modal-header-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: center;
+            border-bottom: 1px solid rgba(3, 23, 12, 0.08);
+            padding-bottom: 15px;
+        }
+
+        .modal-tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: $accent-teal;
+            letter-spacing: 2px;
+        }
+
+        .modal-meta-info {
+            font-size: 0.8rem;
+            color: $text-muted;
+        }
+
+        h2 {
+            font-family: $font-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: $dark-forest;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: $text-dark;
+            line-height: 1.65;
+            margin-bottom: 40px;
+        }
+
+        .btn-modal-cta {
+            display: inline-block;
+            background-color: $dark-forest;
+            color: $white;
+            text-decoration: none;
+            padding: 14px 38px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+            &:hover { background-color: lighten($dark-forest, 5%); }
+        }
+    }
+}
+
+// --- СТИЛОВИ ЗА ИНДЕКС СТРАНИЦАТА (За зачувување функционалност) ---
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(3, 23, 12, 0.3), rgba(3, 23, 12, 0.6)), 
+                url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80') center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 4%;
+    color: $white;
+    .hero-content {
+        max-width: 680px; margin: auto 0;
+        h1 { font-family: $font-serif; font-size: 6rem; font-weight: 400; margin-bottom: 25px; line-height: 1; i { font-style: italic; } }
+        .hero-tag { font-size: 0.8rem; letter-spacing: 2px; display: block; margin-bottom: 15px; }
+        .hero-desc { font-size: 1.15rem; margin-bottom: 35px; }
+        .hero-actions { display: flex; gap: 15px; }
+    }
+    .hero-footer { text-align: center; font-size: 0.75rem; letter-spacing: 3px; opacity: 0.7; }
+}
+
+.split-layout {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px;
+    .stats-row {
+        display: flex; gap: 60px; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(0, 0, 0, 0.08);
+        .stat-item h3 { font-family: $font-serif; font-size: 2.5rem; font-weight: 400; }
+        .stat-item span { font-size: 0.75rem; color: $text-muted; }
+    }
+}
+
+.section-cards .cards-container {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.compact-card {
+    position: relative; height: 480px; overflow: hidden; border-radius: 4px;
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+    .card-content {
+        position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
+        background: linear-gradient(transparent, rgba(3, 23, 12, 0.85)); color: $white;
+        h4 { font-family: $font-serif; font-size: 1.8rem; font-weight: 400; }
+    }
+    &:hover img { transform: scale(1.04); }
+}
+
+// ФУТЕР СТРАНИЦА (Универзален)
+.footer {
+    background-color: #020F08;
+    color: $white;
+    
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 80px;
+    }
+
+    .footer-left {
+        h2 { font-family: $font-serif; font-size: 3rem; font-weight: 400; line-height: 1.15; margin-bottom: 25px; i { font-style: italic; } }
+        p { font-size: 0.95rem; opacity: 0.6; max-width: 480px; margin-bottom: 40px; }
+        .newsletter-wrap {
+            display: flex; max-width: 450px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50px; padding: 4px;
+            input { background: transparent; border: none; padding: 14px 25px; color: $white; flex: 1; outline: none; }
+            button { background-color: $bg-cream; color: $dark-forest; border: none; padding: 0 28px; border-radius: 50px; font-weight: 600; cursor: pointer; }
+        }
+    }
+
+    .footer-links-col {
+        h4 { font-size: 0.8rem; letter-spacing: 2px; opacity: 0.4; margin-bottom: 25px; }
+        ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        ul a { color: $white; text-decoration: none; font-family: $font-serif; font-size: 1.15rem; opacity: 0.8; &:hover { opacity: 1; } }
+    }
+}
+
+// ОДГОВОР НА МОБИЛНИ УРЕДИ (RESPONSIVENESS)
+@media (max-width: 1024px) {
+    .attractions-masonry, .split-layout, .footer-grid, .cards-container {
+        grid-template-columns: 1fr !important;
+        gap: 50px !important;
+    }
+    .col-right {
+        margin-top: 0 !important; // Се поништува изместувањето на мобилен
+    }
+    .navbar {
+        padding: 20px 4%;
+        .nav-links { display: none; } // Чист дизајн за таблет/моб.
+    }
+    .atrakcii-hero .editorial-title {
+        font-size: 3.2rem !important;
+    }
+    .modal-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .modal-image-col {
+        min-height: 280px !important;
+        height: 280px;
+    }
+    .modal-text-col {
+        padding: 35px 25px !important;
+    }
+}
+
+
+
+
+$bg-cream:oklch(96.5% .012 85);
+$dark-forest: #03170C;
+$accent-teal: #0D9488;
+$text-dark: #1F2937;
+$text-muted: #6B7280;
+$white: #FFFFFF;
+
+
+// ХЕРО СЕКЦИЈА
+.history-hero {
+  padding: 180px 5% 80px 5%;
+  background-color: $bg-cream;
+
+  .container-fluid-history {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $accent-teal;
+    display: block;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .editorial-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    line-height: 1.1;
+    font-weight: 400;
+    color: $dark-forest;
+    margin-bottom: 24px;
+    letter-spacing: -1.5px;
+
+    i {
+      font-style: italic;
+      font-weight: 400;
+    }
+  }
+
+  .editorial-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: $text-muted;
+    max-width: 580px;
+    line-height: 1.7;
+  }
+}
+
+// ТЕМЕН ХРОНОЛОШКИ ВРЕМЕПЛОВ
+.section-timeline {
+  background-color: $dark-forest;
+  padding: 120px 5%;
+  position: relative;
+  color: $bg-cream;
+  overflow: hidden;
+
+  // ОГРОМНИ ЦРНО-БЕЛИ СЛИКИ ВО ПОЗАДИНА
+  .timeline-bg-ghost {
+    position: absolute;
+    width: 550px;
+    height: 750px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12; // 12% видливост за совршено блендирање во позадината
+    filter: grayscale(100%) contrast(1.25) brightness(0.75);
+    pointer-events: none;
+    z-index: 1;
+    transition: transform 0.4s ease-out;
+    border-radius: 8px;
+
+    &.img-1 {
+      top: 8%;
+      left: 3%;
+    }
+
+    &.img-2 {
+      top: 40%;
+      right: 3%;
+    }
+
+    &.img-3 {
+      bottom: 8%;
+      left: 4%;
+    }
+  }
+
+  .timeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: $bg-cream;
+    transform: translateX(-50%);
+
+    .timeline-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, $accent-teal, $bg-cream);
+      box-shadow: 0 0 12px rgba($accent-teal, 0.6);
+      transition: height 0.1s ease-out;
+    }
+  }
+
+  .timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50%;
+    position: relative;
+    margin-bottom: 100px;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.left {
+      transform: translateX(-40px);
+    }
+
+    &.right {
+      justify-content: flex-start;
+      padding-left: 50%;
+      padding-right: 0;
+      transform: translateX(40px);
+    }
+
+    &.visible {
+      opacity: 1;
+      transform: translateX(0);
+
+      .timeline-dot {
+        background-color: $accent-teal;
+        transform: translateX(-50%) scale(1.3);
+        box-shadow: 0 0 12px $accent-teal;
+      }
+    }
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $bg-cream;
+    border: 2px solid $dark-forest;
+    transform: translateX(-50%);
+    z-index: 3;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+  }
+
+  .timeline-content {
+    width: 85%;
+    padding: 0 20px;
+
+    .timeline-date {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: $accent-teal;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: $white; // Бело за подобар контраст на црна позадина
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      color:$bg-cream;
+      line-height: 1.7;
+      max-width: 400px;
+    }
+  }
+
+  .timeline-item.left .timeline-content {
+    text-align: right;
+    margin-right: auto;
+    p { margin-left: auto; }
+  }
+
+  .timeline-item.right .timeline-content {
+    text-align: left;
+    margin-left: auto;
+  }
+}
+
+// СЕКЦИЈА ЗА ЗЕМЈОТРЕСОТ
+.section-earthquake {
+  padding: 120px 5%;
+  background-color: $bg-cream;
+
+  .split-earthquake {
+    display: flex;
+    align-items: center;
+    gap: 8%;
+  }
+
+  .eq-image-side {
+    flex: 1;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 30px 60px rgba($dark-forest, 0.12);
+    }
+  }
+
+  .eq-text-side {
+    flex: 1.2;
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      line-height: 1.15;
+      color: $dark-forest;
+      margin-bottom: 24px;
+    }
+
+    p {
+      font-size: 15px;
+      color: $text-muted;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+  }
+
+  .eq-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .eq-stat-box {
+    background-color: rgba($dark-forest, 0.04);
+    border: 1px solid rgba($dark-forest, 0.08);
+    padding: 24px;
+    border-radius: 4px;
+
+    span {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: $accent-teal;
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: $dark-forest;
+    }
+  }
+}
+
+// ФУТЕР
+.footer {
+  background-color: $dark-forest;
+  color: $bg-cream;
+  padding: 100px 5% 50px 5%;
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+  }
+
+  .footer-left {
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: $white;
+
+      i { font-style: italic; }
+    }
+
+    p {
+      font-size: 14px;
+      color:$bg-cream;
+      max-width: 360px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .newsletter-wrap {
+    display: flex;
+    max-width: 420px;
+    border-bottom: 1px solid $bg-cream;
+    padding-bottom: 8px;
+
+    input {
+      background: none;
+      border: none;
+      outline: none;
+      color: $bg-cream;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      width: 100%;
+
+      &::placeholder {
+        color: $bg-cream;
+      }
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: $bg-cream;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $accent-teal;
+      }
+    }
+  }
+
+  .footer-links-col {
+    h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: $accent-teal;
+      margin-bottom: 24px;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-bottom: 12px;
+
+        a {
+          color: $bg-cream;
+          text-decoration: none;
+          font-size: 13px;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// РЕСПОНЗИВНОСТ
+@media (max-width: 1024px) {
+  .history-hero .editorial-title {
+    font-size: 54px;
+  }
+  
+  .section-earthquake .split-earthquake {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 5%;
+    .nav-links, .nav-right { display: none; }
+  }
+
+  .section-timeline {
+    .timeline-line {
+      left: 20px;
+      .timeline-progress { left: 0; }
+    }
+
+    .timeline-item {
+      padding-left: 50px !important;
+      padding-right: 0 !important;
+      justify-content: flex-start !important;
+    }
+
+    .timeline-dot {
+      left: 20px !important;
+    }
+
+    .timeline-content {
+      text-align: left !important;
+      width: 100% !important;
+
+      p { margin-left: 0 !important; }
+    }
+  }
+
+  .section-earthquake .eq-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .footer .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ГАЛЕРИЈА ХЕРО
+.gallery-hero {
+  padding: 180px 5% 60px 5%;
+  background-color: $bg-cream;
+
+  .container-fluid-gallery {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: $accent-teal;
+    display: block;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .editorial-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    line-height: 1.1;
+    font-weight: 400;
+    color: $dark-forest;
+    margin-bottom: 24px;
+    letter-spacing: -1.5px;
+
+    i {
+      font-style: italic;
+    }
+  }
+
+  .editorial-subtitle {
+    font-size: 16px;
+    color: $text-muted;
+    max-width: 580px;
+    line-height: 1.7;
+  }
+}
+
+// ГАЛЕРИЈА СЕКЦИЈА (ПЕТ ВЕЗДИ BENTO LAYOUT)
+.section-gallery {
+  padding: 0 5% 120px 5%;
+  background-color: $bg-cream;
+
+  .gallery-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); // 12-колони за целосна контрола на симетријата
+    gap: 24px;
+  }
+
+  // СТИЛИЗИРАЊЕ НА КАРТИЧКА
+  .gallery-card {
+    position: relative;
+    height: 400px; // Еднаква висина на сите редови за совршено порамнување
+    overflow: hidden;
+    background-color: $dark-forest;
+    box-shadow: 0 10px 30px rgba($dark-forest, 0.05);
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    // ТЕМЕН ОВЕРЛЕЈ (Се појавува на hover и го прави текстот екстра читлив)
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba($dark-forest, 0.85) 0%, rgba($dark-forest, 0.2) 60%, rgba($dark-forest, 0) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      z-index: 2;
+      transition: background 0.4s ease;
+    }
+
+    .card-category {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: $accent-teal;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      opacity: 0.9;
+      transform: translateY(5px);
+      transition: transform 0.4s ease;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: $white;
+      line-height: 1.2;
+      position: relative;
+      padding-bottom: 8px;
+
+      // Кул линија која се шири на hover
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0px;
+        height: 2px;
+        background-color: $accent-teal;
+        transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+    }
+
+    // ХОВЕР ЕФЕКТИ
+    &:hover {
+      img {
+        transform: scale(1.06); // Нежно зумирање на сликата
+      }
+
+      .card-overlay {
+        background: linear-gradient(to top, rgba($dark-forest, 0.95) 0%, rgba($dark-forest, 0.4) 65%, rgba($dark-forest, 0.1) 100%);
+      }
+
+      .card-category {
+        transform: translateY(0);
+      }
+
+      .card-title::after {
+        width: 60px; // Линијата се отвара на hover
+      }
+    }
+
+    // ДЕФИНИЦИИ ЗА КОЛОНИ (За 12-колонскиот систем)
+    &.span-12 { grid-column: span 12; }
+    &.span-8  { grid-column: span 8; }
+    &.span-7  { grid-column: span 7; }
+    &.span-5  { grid-column: span 5; }
+    &.span-4  { grid-column: span 4; }
+  }
+}
+
+// МОБИЛНА ОПТИМИЗАЦИЈА (Се претвора во единечна колона на мали екрани за да не се искрши)
+@media (max-width: 1024px) {
+  .section-gallery .gallery-grid {
+    gap: 16px;
+    
+    .gallery-card {
+      height: 350px;
+      
+      &.span-8, &.span-7, &.span-5, &.span-4 {
+        grid-column: span 6; // На таблет се делат 50/50
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-hero {
+    padding-top: 140px;
+    .editorial-title {
+      font-size: 48px;
+    }
+  }
+
+  .section-gallery .gallery-grid {
+    grid-template-columns: 1fr; // На мобилен секоја слика е на цела ширина
+    
+    .gallery-card {
+      grid-column: span 12 !important;
+      height: 280px;
+      
+      .card-overlay {
+        padding: 20px;
+      }
+      
+      .card-title {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+
+
+.visit-hero {
+  padding: 180px 5% 40px 5%;
+  background-color: $bg-cream;
+
+  .container-fluid-visit {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $accent-teal;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .editorial-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 1.15;
+    font-weight: 400;
+    color: $dark-forest;
+    letter-spacing: -1px;
+
+    i { font-style: italic; }
+  }
+}
+
+// СЕКЦИЈА 1: ИНФО КАРТИЧКИ
+.section-info-cards {
+  padding: 20px 5% 80px 5%;
+  background-color: $bg-cream;
+
+  .info-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .info-card {
+    background-color: $white;
+    padding: 40px;
+    border-radius: 4px;
+    text-decoration: none; // Спречува подвлекување бидејќи е линк
+    color: $text-dark;
+    box-shadow: 0 4px 20px rgba($dark-forest, 0.03);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba($dark-forest, 0.08);
+
+      .card-link { color: $dark-forest; }
+    }
+
+    .card-icon {
+      color: $accent-teal;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: $dark-forest;
+    }
+
+    p {
+      font-size: 14px;
+      color: $text-muted;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: $accent-teal;
+      transition: color 0.2s ease;
+    }
+  }
+}
+
+// СЕКЦИЈА 2: ИТИНЕРЕРИ
+.section-itineraries {
+  padding: 100px 5%;
+  background-color: $white;
+
+  .container-fluid-visit {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    color: $dark-forest;
+    margin-bottom: 48px;
+  }
+
+  .itinerary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .itinerary-card {
+    background-color: $bg-cream;
+    padding: 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: $text-dark;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba($dark-forest, 0.06);
+    }
+
+    .card-head {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba($dark-forest, 0.1);
+      padding-bottom: 20px;
+    }
+
+    .icon-wrap {
+      color: $accent-teal;
+      background-color: $white;
+      padding: 10px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .meta-title {
+      h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px;
+        color: $dark-forest;
+        margin-bottom: 4px;
+        line-height: 1.2;
+      }
+      .duration {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: $text-muted;
+      }
+    }
+
+    .itinerary-steps {
+      list-style: none;
+
+      li {
+        font-size: 14px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: $text-dark;
+
+        span {
+          font-size: 11px;
+          font-weight: 600;
+          color: $accent-teal;
+        }
+
+        &:last-child { margin-bottom: 0; }
+      }
+    }
+  }
+}
+
+// СЕКЦИЈА 3: ИНТЕРАКТИВНА МАПА (НОВО)
+.section-interactive-map {
+  padding: 100px 5%;
+  background-color: $bg-cream;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .map-text-header {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 48px;
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      color: $dark-forest;
+      margin-bottom: 16px;
+    }
+    p {
+      font-size: 15px;
+      color: $text-muted;
+    }
+  }
+
+  #pehcevo-map {
+    width: 100%;
+    max-width: 1200px;
+    height: 550px;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba($dark-forest, 0.1);
+    z-index: 10;
+    background-color: $white;
+  }
+
+  // Стилизирање на Leaflet скокачките прозорци (Popups) за да одговараат на брендот
+  .leaflet-popup-content-wrapper {
+    background-color: $dark-forest;
+    color: $bg-cream;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    padding: 6px;
+  }
+  .leaflet-popup-tip {
+    background-color: $dark-forest;
+  }
+  .leaflet-popup-content {
+    h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      margin-bottom: 4px;
+      color: $white;
+    }
+    p {
+      font-size: 12px;
+      color:$bg-cream;
+      margin: 0;
+    }
+  }
+}
+
+// РЕСПОНЗИВНОСТ ЗА МОБИЛНИ
+@media (max-width: 1024px) {
+  .info-grid, .itinerary-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .visit-hero .editorial-title { font-size: 42px; }
+  .info-grid, .itinerary-grid {
+    grid-template-columns: 1fr !important;
+  }
+  #pehcevo-map { height: 400px; }
+}
+
+
+.travel-hero {
+  padding: 180px 5% 40px 5%;
+  background-color: $bg-cream;
+
+  .container-fluid-travel {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $accent-teal;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .editorial-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 1.15;
+    font-weight: 400;
+    color: $dark-forest;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+
+    i { font-style: italic; }
+  }
+
+  .editorial-subtitle {
+    font-size: 16px;
+    color: $text-muted;
+    max-width: 580px;
+    line-height: 1.7;
+  }
+}
+
+// РУТИ ГОРНИ КАРТИЧКИ
+.section-routes {
+  padding: 40px 5% 80px 5%;
+  background-color: $bg-cream;
+
+  .routes-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .route-card {
+    background-color: $white;
+    padding: 32px;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba($dark-forest, 0.02);
+    border: 1px solid rgba($dark-forest, 0.05);
+
+    .card-icon {
+      color: $accent-teal;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: $dark-forest;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .route-info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba($dark-forest, 0.08);
+      font-size: 13px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .label {
+        color: $text-muted;
+      }
+
+      .val {
+        color: $text-dark;
+        font-weight: 500;
+
+        &.font-code {
+          font-family: monospace;
+          background-color: rgba($accent-teal, 0.08);
+          padding: 2px 8px;
+          border-radius: 4px;
+          color: $accent-teal;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
+
+// СЕКЦИЈА МАПА СО ПОЗАДИНА ОД ШУМА И КОПЧЕ
+.section-travel-map {
+  background-color: $dark-forest;
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+
+  .map-container-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .map-header {
+    margin-bottom: 40px;
+
+    .section-tag-light {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: $accent-teal;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      color: $bg-cream;
+      font-weight: 400;
+      max-width: 550px;
+      line-height: 1.2;
+    }
+  }
+
+  .map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  #route-map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  // ПЛОВЕЧКО GOOGLE MAPS КОПЧЕ
+  .btn-google-maps {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999; // Да биде над самата мапа
+    background-color: $dark-forest;
+    color: $bg-cream;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid $bg-cream;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+      background-color: $accent-teal;
+      color: $white;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba($accent-teal, 0.4);
+      border-color: transparent;
+    }
+  }
+}
+
+// СЕКЦИЈА ДОЛНИ КАРТИЧКИ ЗА ТРАНСПОРТ
+.section-transport-details {
+  padding: 100px 5%;
+  background-color: $bg-cream;
+
+  .transport-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .transport-card {
+    background-color: transparent;
+    border: 1px solid rgba($dark-forest, 0.1);
+    padding: 40px 32px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba($white, 0.4);
+    }
+
+    .card-icon {
+      color: $accent-teal;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: $dark-forest;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      color: $text-muted;
+      line-height: 1.7;
+    }
+  }
+}
+
+// РЕСПОНЗИВНОСТ ЗА МОБИЛНИ
+@media (max-width: 1024px) {
+  .routes-grid, .transport-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .travel-hero .editorial-title { font-size: 42px; }
+  .routes-grid, .transport-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .section-travel-map .map-wrapper { height: 400px; }
+  .btn-google-maps {
+    left: 16px;
+    right: 16px;
+    justify-content: center;
+  }
+}
+
+
+// ХЕРО ЗА SEASONS
+.seasons-hero {
+  padding: 180px 5% 60px 5%;
+  background-color: $bg-cream;
+
+  .container-fluid-seasons {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $accent-teal;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .editorial-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 1.15;
+    font-weight: 400;
+    color: $dark-forest;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+
+    i { font-style: italic; }
+  }
+
+  .editorial-subtitle {
+    font-size: 16px;
+    color: $text-muted;
+    max-width: 580px;
+    line-height: 1.7;
+  }
+}
+
+// СЕЗОНИ ИЗВОРЕН FEED (Алтернирачки редови)
+.section-seasons-feed {
+  padding: 40px 5% 120px 5%;
+  background-color: $bg-cream;
+
+  .container-fluid-seasons {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 120px; // Прекрасно празно растојание меѓу сезоните
+  }
+
+  .season-row {
+    display: flex;
+    align-items: center;
+    gap: 8%;
+
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .season-image-side {
+    flex: 1;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba($dark-forest, 0.08);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.03);
+    }
+  }
+
+  .season-text-side {
+    flex: 1.1;
+
+    .season-date-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: $accent-teal;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      color: $dark-forest;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .season-desc {
+      font-size: 16px;
+      color: $text-dark;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+  }
+
+  // Табели со активности и совети
+  .season-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    border-bottom: 1px solid rgba($dark-forest, 0.1);
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+  }
+
+  .details-col {
+    h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: $text-muted;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        font-size: 13px;
+        color: $text-dark;
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 14px;
+
+        &::before {
+          content: '—';
+          position: absolute;
+          left: 0;
+          color: rgba($dark-forest, 0.3);
+        }
+      }
+    }
+  }
+
+  // Копчиња/Тагови за препорачани атракции
+  .recommended-attractions {
+    h5 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: $text-muted;
+      margin-bottom: 16px;
+    }
+
+    .tags-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .attraction-tag-btn {
+      background-color: transparent;
+      border: 1px solid rgba($dark-forest, 0.2);
+      color: $dark-forest;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $dark-forest;
+        color: $bg-cream;
+        border-color: $dark-forest;
+      }
+    }
+  }
+}
+
+// СТИЛИЗИРАЊЕ НА ИНТЕРАКТИВНИОТ МОДАЛЕН POPUP
+.attraction-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+
+    .modal-content-wrapper {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba($dark-forest, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-content-wrapper {
+    position: relative;
+    background-color: $bg-cream;
+    width: 90%;
+    max-width: 850px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: $dark-forest;
+    cursor: pointer;
+    z-index: 5;
+    transition: color 0.2s ease;
+
+    &:hover { color: $accent-teal; }
+  }
+
+  .modal-split {
+    display: flex;
+    height: 480px;
+  }
+
+  .modal-img-container {
+    flex: 1;
+    background-color: $dark-forest;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .modal-text-container {
+    flex: 1.1;
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .modal-meta-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: $accent-teal;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      color: $dark-forest;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 14px;
+      color: $text-dark;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .modal-view-more {
+      font-size: 11px;
+      font-weight: 600;
+      color: $dark-forest;
+      text-decoration: none;
+      letter-spacing: 1px;
+      margin-top: auto;
+      transition: color 0.2s ease;
+
+      &:hover { color: $accent-teal; }
+    }
+  }
+}
+
+// РЕСПОНЗИВНОСТ ЗА МОБИЛНИ ЕКРАНИ
+@media (max-width: 1024px) {
+  .season-row, .season-row.reverse {
+    flex-direction: column !important;
+    gap: 40px;
+  }
+  .season-image-side {
+    width: 100%;
+    height: 400px;
+  }
+  .modal-split {
+    flex-direction: column;
+    height: auto !important;
+  }
+  .modal-img-container { height: 220px; }
+  .modal-text-container { padding: 40px 24px; }
+}
+
+
+
+
+// ХЕРО СЕКЦИЈА ЗА СМЕСТУВАЊАТА
+.stay-hero {
+  padding: 180px 5% 40px 5%;
+  background-color: $bg-cream;
+
+  .container-fluid-stay {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $accent-teal;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .editorial-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 1.15;
+    font-weight: 400;
+    color: $dark-forest;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+    i { font-style: italic; }
+  }
+
+  .editorial-subtitle {
+    font-size: 16px;
+    color: $text-muted;
+    max-width: 580px;
+    line-height: 1.7;
+  }
+}
+
+// МРЕЖА ОД КАРТИЧКИ И СМЕСТУВАЊА
+.section-stay-grid {
+  padding: 20px 5% 120px 5%;
+  background-color: $bg-cream;
+
+  .stay-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .stay-card {
+    background-color: $white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(3, 23, 12, 0.02);
+    border: 1px solid rgba(3, 23, 12, 0.05);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(3, 23, 12, 0.08);
+    }
+
+    .card-image-wrapper {
+      position: relative;
+      height: 340px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .badge-type {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: $bg-cream;
+        backdrop-filter: blur(8px);
+        color: $white;
+        font-size: 10px;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 30px;
+        letter-spacing: 1px;
+      }
+
+      .badge-rating {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: $accent-teal;
+        color: $white;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 4px;
+      }
+    }
+
+    .card-content {
+      padding: 32px;
+
+      .card-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 16px;
+
+        h3 {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 28px;
+          color: $dark-forest;
+          font-weight: 500;
+          margin: 0;
+        }
+
+        .price {
+          font-size: 16px;
+          font-weight: 600;
+          color: $dark-forest;
+          small { color: $text-muted; font-weight: 400; }
+        }
+      }
+
+      .card-desc {
+        font-size: 14px;
+        color: $text-muted;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        height: 44px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .card-footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(3, 23, 12, 0.06);
+        padding-top: 20px;
+
+        .card-icons {
+          display: flex;
+          gap: 14px;
+          color: $accent-teal;
+
+          svg {
+            width: 18px;
+            height: 18px;
+            stroke: $accent-teal;
+            stroke-width: 1.75;
+            fill: none;
+          }
+        }
+
+        .btn-view-more {
+          background-color: $dark-forest;
+          color: $bg-cream;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 30px;
+          font-family: 'Inter', sans-serif;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: $accent-teal;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// РЕВИДИРАН ПРЕМИУМ МОДАЛ (ПОЛА-ПОЛА СО ЧИСТ bg-cream И ДОЛЕН ПАДИНГ)
+.stay-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    .modal-wrapper { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(3, 23, 12, 0.65);
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-wrapper {
+    position: relative;
+    background-color: $bg-cream;
+    width: 92%;
+    max-width: 1100px; 
+    height: 600px; 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(3, 23, 12, 0.3);
+    z-index: 5;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .close-modal-btn {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: $dark-forest;
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+    transition: color 0.2s ease, transform 0.2s ease;
+    &:hover { 
+      color: $accent-teal;
+      transform: scale(1.1);
+    }
+  }
+
+  .modal-layout-split {
+    display: flex;
+    height: 100%; 
+  }
+
+  // Слики (Лева страна - Точно 50%)
+  .modal-gallery-side {
+    flex: 1; 
+    background-color: #0b0f0c;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .main-viewer {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(3, 23, 12, 0.3);
+        border: none;
+        color: $white;
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        transition: all 0.2s ease;
+        z-index: 3;
+
+        &:hover { background-color: $accent-teal; }
+        &.prev-arrow { left: 16px; }
+        &.next-arrow { right: 16px; }
+      }
+    }
+
+    .thumbnails-container {
+      height: 90px;
+      background-color: #050806;
+      display: flex;
+      gap: 2px;
+      padding: 2px;
+
+      .thumb-img {
+        flex: 1;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+        opacity: 0.35;
+        transition: all 0.2s ease;
+
+        &:hover { opacity: 0.7; }
+        &.active {
+          opacity: 1;
+          box-shadow: inset 0 0 0 3px $accent-teal;
+        }
+      }
+    }
+  }
+
+  // Информации (Десна страна - Точно 50% со чист $bg-cream)
+  .modal-info-side {
+    flex: 1; 
+    background-color: $bg-cream; // Обезбедено за да нема прозирна позадина
+    padding: 50px 50px 40px 50px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 100%;
+    box-sizing: border-box;
+
+    .stay-meta-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: $accent-teal;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      color: $dark-forest;
+      font-weight: 400;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .stay-description {
+      font-size: 14px;
+      color: $text-dark;
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    }
+
+    .services-section {
+      h3 {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        color: $text-muted;
+        margin: 0 0 14px 0;
+        border-bottom: 1px solid rgba(3, 23, 12, 0.08);
+        padding-bottom: 6px;
+      }
+
+      .services-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+
+        li {
+          font-size: 13px;
+          color: $dark-forest;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          svg {
+            width: 14px;
+            height: 14px;
+            stroke: $accent-teal;
+            stroke-width: 2.2;
+            fill: none;
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+
+    .modal-action-row {
+      margin-top: auto; 
+    }
+
+    .btn-call-reservation {
+      background-color: $dark-forest;
+      color: $bg-cream;
+      text-decoration: none;
+      padding: 15px 28px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+
+      svg {
+        width: 14px;
+        height: 14px;
+        stroke: $bg-cream;
+        stroke-width: 2;
+        fill: none;
+      }
+
+      &:hover {
+        background-color: $accent-teal;
+        color: $white;
+        transform: translateY(-2px);
+        svg { stroke: $white; }
+      }
+    }
+  }
+}
+
+// ПРЕМИУМ ФУТЕР
+.footer {
+  background-color: $dark-forest;
+  color: $bg-cream;
+  padding: 80px 5% 40px 5%;
+
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+  }
+
+  .footer-left {
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      i { font-style: italic; }
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: $text-muted; 
+      margin-bottom: 30px;
+      max-width: 400px;
+    }
+
+    .newsletter-wrap {
+      display: flex;
+      max-width: 400px;
+      border-bottom: 1px solid $white; // Заменето со чиста боја
+      padding-bottom: 8px;
+
+      input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: $white;
+        flex: 1;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+
+        &::placeholder { color: $text-muted; }
+      }
+
+      button {
+        background-color: $bg-cream;
+        color: $dark-forest;
+        border: none;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+  .footer-links-col {
+    h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: $text-muted; // Чиста променлива
+      margin-bottom: 24px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 12px;
+
+        a {
+          color: $bg-cream;
+          text-decoration: none;
+          font-size: 13px;
+          transition: color 0.2s;
+
+          &:hover { color: $accent-teal; }
+        }
+      }
+    }
+  }
+}
+
+// РЕСПОНЗИВНОСТ
+@media (max-width: 900px) {
+  .stay-grid { grid-template-columns: 1fr !important; gap: 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .modal-wrapper { height: auto !important; max-height: 90vh; overflow-y: auto; }
+  .modal-layout-split { flex-direction: column; height: auto !important; }
+  .modal-gallery-side { height: 260px; flex: none; }
+  .modal-info-side { padding: 30px 20px; flex: none; height: auto !important; }
+}

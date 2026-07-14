@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планирај Посета - Пехчево</title>
+    <!-- Премиум фонтови -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Leaflet Карта CSS за интерактивната мапа -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-cream">
+
+    <!-- НАВИГАЦИЈА -->
+   <nav class="navbar">
+        <div class="logo">Pehčevo.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">ДОМА</a></li>
+            <li><a href="atrakcii.html">АТРАКЦИИ</a></li>
+            <li><a href="history.html">ИСТОРИЈА</a></li>
+            <li><a href="gallery.html">ГАЛЕРИЈА</a></li>
+            <li><a href="visitplan.html" class="active">ПЛАНИРАЈ ПОСЕТА <small>▼</small></a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="lang-selector"><b>MK</b> · EN</span>
+            <a href="#" class="btn-nav-cta">ПЛАНИРАЈ</a>
+        </div>
+    </nav>
+
+
+    <!-- ХЕРО СЕКЦИЈА -->
+    <header class="visit-hero">
+        <div class="container-fluid-visit">
+            <span class="section-tag">ПЛАНИРАЈ ПОСЕТА</span>
+            <h1 class="editorial-title">Вашето бавно, искрено<br>водство низ <i>Пехчево.</i></h1>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЈА 1: ИНФО КАРТИЧКИ (КЛИКАБИЛНИ) -->
+    <section class="section-info-cards">
+        <div class="info-grid">
+            
+            <!-- Картичка 1 -->
+            <a href="travel.html" class="info-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3>Како да стигнете</h3>
+                <p>180 км источно од Скопје. 2ч 45мин со кола. Најблиски аеродроми: Скопје (SKP), Софија (SOF).</p>
+                <span class="card-link">ОТВОРИ СТРАНИЦА <small>→</small></span>
+            </a>
+
+            <!-- Картичка 2 -->
+            <a href="seasons.html" class="info-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                </div>
+                <h3>Најдобра сезона</h3>
+                <p>Мај – октомври за планинарење и водопади. Јануари – февруари за авантури со снегови.</p>
+                <span class="card-link">ОТВОРИ СТРАНИЦА <small>→</small></span>
+            </a>
+
+            <!-- Картичка 3 -->
+            <a href="stay.html" class="info-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+                </div>
+                <h3>Каде да престојувате</h3>
+                <p>Семејни куќи за гости, планински коли покрај Равна Река и мали бутик хотели во градот.</p>
+                <span class="card-link">ОТВОРИ СТРАНИЦА <small>→</small></span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- СЕКЦИЈА 2: ИТИНЕРЕРИ -->
+    <section class="section-itineraries">
+        <div class="container-fluid-visit">
+            <span class="section-tag">ИТИНЕРЕРИ</span>
+            <h2 class="section-title">Изберете го својот ритам.</h2>
+            
+            <div class="itinerary-grid">
+                
+                <!-- Итинерер 1 -->
+                <a href="itinerary1.html" class="itinerary-card">
+                    <div class="card-head">
+                        <div class="icon-wrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2 6.3-6.4 2.1 2-6.3z"/></svg>
+                        </div>
+                        <div class="meta-title">
+                            <h3>Еден совршен ден</h3>
+                            <span class="duration">8 ЧАСА</span>
+                        </div>
+                    </div>
+                    <ul class="itinerary-steps">
+                        <li><span>01</span> Sunrise at Ravna Reka</li>
+                        <li><span>02</span> Waterfalls loop hike</li>
+                        <li><span>03</span> Cheese & honey lunch</li>
+                        <li><span>04</span> Sunset from Bukovik</li>
+                    </ul>
+                </a>
+
+                <!-- Итинерер 2 -->
+                <a href="itinerary2.html" class="itinerary-card">
+                    <div class="card-head">
+                        <div class="icon-wrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+                        </div>
+                        <div class="meta-title">
+                            <h3>Авантуристички викенд</h3>
+                            <span class="duration">2 ДЕНА</span>
+                        </div>
+                    </div>
+                    <ul class="itinerary-steps">
+                        <li><span>01</span> Full Bukovik ascent</li>
+                        <li><span>02</span> Overnight in mountain lodge</li>
+                        <li><span>03</span> Wildlife walk</li>
+                        <li><span>04</span> Village cultural tour</li>
+                    </ul>
+                </a>
+
+                <!-- Итинерер 3 -->
+                <a href="itinerary3.html" class="itinerary-card">
+                    <div class="card-head">
+                        <div class="icon-wrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5.5 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="M18.5 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="M12 18.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg>
+                        </div>
+                        <div class="meta-title">
+                            <h3>Велосипедистичко бегство</h3>
+                            <span class="duration">3 ДЕНА</span>
+                        </div>
+                    </div>
+                    <ul class="itinerary-steps">
+                        <li><span>01</span> Pehčevo – Berovo loop (42 km)</li>
+                        <li><span>02</span> Forest single-track MTB</li>
+                        <li><span>03</span> Rest day at hot springs</li>
+                        <li><span>04</span> River valley descent</li>
+                    </ul>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЈА 3: ИНТЕРАКТИВНА МАПА (Замена за формата) -->
+    <section class="section-interactive-map">
+        <div class="map-text-header">
+            <span class="section-tag">ИСТРАЖУВАЈ ВО ЖИВО</span>
+            <h2>Интерактивен водич низ регионот</h2>
+            <p>Кликнете на пиновите за да ги откриете клучните точки, планинарските патеки и природните богатства на Пехчево.</p>
+        </div>
+        <!-- Контејнерот за мапата -->
+        <div id="pehcevo-map"></div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container-fluid-visit footer-grid">
+            <div class="footer-left">
+                <h2>Спремни да дишете<br><i>длабоко?</i></h2>
+                <p>Придружете се на мала заедница на свесни патници кои го истражуваат дивото срце на Малешево.</p>
+                <div class="newsletter-wrap">
+                    <input type="email" placeholder="Вашата е-пошта">
+                    <button>ПРИКЛУЧИ СЕ</button>
+                </div>
+            </div>
+            <div class="footer-links-col">
+                <h4>ИСТРАЖИ</h4>
+                <ul>
+                    <li><a href="atrakcii.html">Атракции</a></li>
+                    <li><a href="history.html">Историја</a></li>
+                    <li><a href="gallery.html">Галерија</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <h4>ПРАКТИЧНО</h4>
+                <ul>
+                    <li><a href="#">Инфо центар</a></li>
+                    <li><a href="#">Состојба на патеки</a></li>
+                    <li><a href="#">Итно: 112</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet Карта JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Атракции - Пехчево</title>
+    <!-- Премиум фонтови за автентичен изглед -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-cream">
+
+    <!-- НАВИГАЦИЈА - ИДЕНТИЧНА СТРУКТУРА КАКО НА ПОЧЕТНАТА СЕКЦИЈА -->
+   <nav class="navbar">
+        <div class="logo">Pehčevo.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">ДОМА</a></li>
+            <li><a href="atrakcii.html">АТРАКЦИИ</a></li>
+            <li><a href="history.html">ИСТОРИЈА</a></li>
+            <li><a href="gallery.html">ГАЛЕРИЈА</a></li>
+            <li><a href="visitplan.html" class="active">ПЛАНИРАЈ ПОСЕТА <small>▼</small></a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="lang-selector"><b>MK</b> · EN</span>
+            <a href="#" class="btn-nav-cta">ПЛАНИРАЈ</a>
+        </div>
+    </nav>
+
+
+    <!-- ХЕРО СЕКЦИЈА ЗА АТРАКЦИИ -->
+    <header class="atrakcii-hero">
+        <div class="container-fluid-atrakcii">
+            <span class="section-tag">АТРАКЦИИ</span>
+            <h1 class="editorial-title">Елементарни чуда на<br><i>Малешево.</i></h1>
+            <p class="editorial-subtitle">Раскрстете ги патиштата со недопрената природа, вековните манастири и природните феномени скриени длабоко во регионот на Пехчево.</p>
+        </div>
+    </header>
+
+    <!-- АСИМЕТРИЧНА МРЕЖА (STAGGERED GRID) НА АТРАКЦИИ -->
+    <section class="section-grid-atrakcii">
+        <div class="container-fluid-atrakcii attractions-masonry">
+            
+            <!-- КОЛОНА ЛЕВО -->
+            <div class="masonry-column col-left">
+                
+                <!-- 1. Пехчевски водопади -->
+                <div class="attraction-card" data-title="Пехчевски водопади" data-category="ПРИРОДА" data-meta="Патека · 3.2 км" data-img="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80" data-desc="Прекрасен комплекс од седум брзи водопади на Равна Река, обиколени со густа букова и борова шума, со уредени патеки, дрвени мовчиња и места за одмор.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80" alt="Пехчевски водопади">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">ПРИРОДА</span>
+                        <span class="details">Патека · 3.2 км</span>
+                    </div>
+                    <h3>Пехчевски водопади</h3>
+                    <p>Впечатлив збир на водопади кои се спуштаат низ карпести кањони длабоко во малешевската тајга.</p>
+                </div>
+
+                <!-- 2. Врв Буковик -->
+                <div class="attraction-card" data-title="Врв Буковик" data-category="АВАНТУРА" data-meta="Планинарење · 1.703 м" data-img="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" data-desc="Врв со спектакуларен панорамски поглед на целата Малешевска котлина. Познат по чистиот воздух и уникатната вегетација, како и палео-вулканските карпести маси.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Врв Буковик">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">АВАНТУРА</span>
+                        <span class="details">Планинарење · 1.703 м</span>
+                    </div>
+                    <h3>Врв Буковик</h3>
+                    <p>Освежувачко искачување до еден од највпечатливите панорамски видиковци на Малешевијата.</p>
+                </div>
+
+                <!-- 3. Манастир Св. Петка -->
+                <div class="attraction-card" data-title="Манастир Света Петка" data-category="КУЛТУРА" data-meta="Историски локалитет" data-img="https://images.unsplash.com/photo-1548625361-155de8c7375d?auto=format&fit=crop&w=800&q=80" data-desc="Духовно светилиште сместено во мирно опкружување близу Пехчево, познато по својата автентична архитектура, манастирски мир и лековита вода која привлекува верници со векови.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1548625361-155de8c7375d?auto=format&fit=crop&w=800&q=80" alt="Манастир Св. Петка">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">КУЛТУРА</span>
+                        <span class="details">Историски локалитет</span>
+                    </div>
+                    <h3>Манастир Св. Петка</h3>
+                    <p>Скриен меѓу дабовите дрвја, овој комплекс нуди длабок мир и увид во вековната православна традиција.</p>
+                </div>
+
+                <!-- 4. Патеката на Петко -->
+                <div class="attraction-card" data-title="Патеката на Петко" data-category="ЕДУКАЦИЈА" data-meta="Тематска патека · 4.5 км" data-img="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80" data-desc="Прекрасно уредена едукативно-рекреативна патека наменета за семејства и деца. Долж патеката има информативни табли за мечките и шумскиот свет, како и забавни реквизити.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80" alt="Патеката на Петко">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">ЕДУКАЦИЈА</span>
+                        <span class="details">Тематска патека · 4.5 км</span>
+                    </div>
+                    <h3>Патеката на Петко</h3>
+                    <p>Забавно и поучно шумско искуство идеално за помладите истражувачи и семејни прошетки.</p>
+                </div>
+
+                <!-- 5. Езерце Парк -->
+                <div class="attraction-card" data-title="Езерце Парк" data-category="РЕКРЕАЦИЈА" data-meta="Градски парк" data-img="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80" alt="Езерце Парк">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80" alt="Езерце Парк">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">РЕКРЕАЦИЈА</span>
+                        <span class="details">Градски парк</span>
+                    </div>
+                    <h3>Езерце Парк</h3>
+                    <p>Уредена парковска површина која нуди мирно бегство и релаксација во близина на центарот.</p>
+                </div>
+
+                <!-- 6. Вулканска Купа Буковик -->
+                <div class="attraction-card" data-title="Вулканска Купа Буковик" data-category="ГЕОЛОГИЈА" data-meta="Природен феномен" data-img="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" data-desc="Уникатен геолошки релјефен облик на Буковик кој сведочи за палео-вулканската активност на овој терен пред милиони години. Претставува редок природен раритет на Балканот.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Вулканска Купа Буковик">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">ГЕОЛОГИЈА</span>
+                        <span class="details">Природен феномен</span>
+                    </div>
+                    <h3>Вулканска Купа Буковик</h3>
+                    <p>Резерват на геолошка историја кој открива траги од древна вулканска активност.</p>
+                </div>
+
+            </div>
+
+            <!-- КОЛОНА ДЕСНО -->
+            <div class="masonry-column col-right">
+                
+                <!-- 7. Равна Река -->
+                <div class="attraction-card" data-title="Равна Река" data-category="ПРИРОДА" data-meta="Излетничко место" data-img="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80" data-desc="Најпознатиот туристичко-рекреативен локалитет во Пехчево. Прекрасна долина на истоимената река, идеален за чист озонски воздух, спортски риболов и одмор во свежи летни вечери.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80" alt="Равна Река">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">ПРИРОДА</span>
+                        <span class="details">Излетничко место</span>
+                    </div>
+                    <h3>Равна Река</h3>
+                    <p>Култно туристичко место каде планинските бистри води креираат идеален простор за рекреација.</p>
+                </div>
+
+                <!-- 8. Малешевски Планини -->
+                <div class="attraction-card" data-title="Малешевски Планини" data-category="ПЕЈЗАЖ" data-meta="Масив · Заштитен регион" data-img="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" data-desc="Простран планински венец со специфична планинска клима, богат со ендемични видови флора и некои од најубавите високостеблени борови шуми во Југоисточна Европа.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Малешевски Планини">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">ПЕЈЗАЖ</span>
+                        <span class="details">Масив · Заштитен регион</span>
+                    </div>
+                    <h3>Малешевски Планини</h3>
+                    <p>Бесконечни хоризонти од шума и пасишта, исполнети со озон и неверојатен спокој.</p>
+                </div>
+
+                <!-- 9. Изворите на Каменица -->
+                <div class="attraction-card" data-title="Изворите на Каменица / Брегалница" data-category="ВОДЕН СВЕТ" data-meta="Хидро-локалитет" data-img="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" data-desc="Изворите од кои се раѓаат најубавите притоки во овој крај. Локација со исклучително студена, кристално питка и планинска бистра изворска вода со недопрена еко-средина.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Изворите на Каменица">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">ВОДЕН СВЕТ</span>
+                        <span class="details">Хидро-локалитет</span>
+                    </div>
+                    <h3>Изворите на Каменица</h3>
+                    <p>Местото каде започнува приказната за бистрите малешевски речни текови.</p>
+                </div>
+
+                <!-- 10. Вртена Скала & Кадиица -->
+                <div class="attraction-card" data-title="Вртена Скала & Врв Кадиица" data-category="ИСТРАЖУВАЊЕ" data-meta="Врв · 1.932 м" data-img="https://images.unsplash.com/photo-1485594050903-8e8ee7b071a8?auto=format&fit=crop&w=800&q=80" data-desc="Највисоката точка на Малешевските Планини (Врв Кадиица - 1.932м) и специфичниот карпест предел Вртена Скала. Ова место претставува возбудлив предизвик за сите планинари и љубители на алпинизмот.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1485594050903-8e8ee7b071a8?auto=format&fit=crop&w=800&q=80" alt="Врв Кадиица">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">ИСТРАЖУВАЊЕ</span>
+                        <span class="details">Врв · 1.932 м</span>
+                    </div>
+                    <h3>Врв Кадиица & Вртена Скала</h3>
+                    <p>Импресивни височини и моќни карпести формации на самата граница.</p>
+                </div>
+
+                <!-- 11. Едукативен Центар -->
+                <div class="attraction-card" data-title="Едукативен Центар за зачувување на природата" data-category="КУЛТУРА" data-meta="Во село Негрево" data-img="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" data-desc="Модерен едукативен центар лоциран во село Негрево. На исклучително интересен, современ и интерактивен начин преку мултимедија ја презентира богатата биолошка разновидност на целиот Малешевски регион.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Едукативен Центар">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">КУЛТУРА</span>
+                        <span class="details">Во село Негрево</span>
+                    </div>
+                    <h3>Едукативен Центар</h3>
+                    <p>Интерактивна ризница лоцирана во с. Негрево која го открива биодиверзитетот на регионот.</p>
+                </div>
+
+                <!-- 12. Кукљето & Јудови Ливади -->
+                <div class="attraction-card" data-title="Кукљето & Јудови Ливади" data-category="БОТАНИКА" data-meta="Резерват · Ретки видови" data-img="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" data-desc="Строго заштитениот ботанички локалитет Јудови Ливади е единственото место во Македонија каде успева инсектојадното растение Росика (Drosera Rotundifolia), лоцирано во близина на уникатниот интензивен ерозивен природен феномен Кукљето.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Јудови Ливади">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">БОТАНИКА</span>
+                        <span class="details">Резерват · Ретки видови</span>
+                    </div>
+                    <h3>Кукљето & Јудови Ливади</h3>
+                    <p>Заштитен локалитет каде вирее фасцинантното растение месојадка.</p>
+                </div>
+
+                <!-- 13. Црнички Мелови -->
+                <div class="attraction-card" data-title="Црнички Мелови" data-category="ГЕОЛОГИЈА" data-meta="Специфичен релјеф" data-img="https://images.unsplash.com/photo-1472214222541-d510753a4907?auto=format&fit=crop&w=800&q=80" data-desc="Интересни земјени пирамиди, пресеци и карактеристични мелови настанати со долготрајна природна ерозија на почвата, создавајќи прекрасен, речиси пустински визуелен контраст среде зелените планински предели.">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1472214222541-d510753a4907?auto=format&fit=crop&w=800&q=80" alt="Црнички Мелови">
+                    </div>
+                    <div class="card-meta">
+                        <span class="tag">ГЕОЛОГИЈА</span>
+                        <span class="details">Специфичен релјеф</span>
+                    </div>
+                    <h3>Црнички Мелови</h3>
+                    <p>Ерозивни почвени формации кои прават неверојатен визуелен контраст во релјефот.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ПРЕМИУМ EDITORIAL POPUP МОДАЛ -->
+    <div class="editorial-modal" id="attractionModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-window">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-grid">
+                <div class="modal-image-col">
+                    <img id="modalImg" src="" alt="">
+                </div>
+                <div class="modal-text-col">
+                    <div class="modal-header-meta">
+                        <span id="modalCategory" class="modal-tag"></span>
+                        <span id="modalMeta" class="modal-meta-info"></span>
+                    </div>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDesc"></p>
+                    <div class="modal-footer-action">
+                        <a href="#" class="btn-modal-cta">Испланирај Рута</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕМЕН ФУТЕР -->
+    <footer class="footer">
+        <div class="container-fluid-atrakcii footer-grid">
+            <div class="footer-left">
+                <h2>Спремни да дишете<br><i>длабоко?</i></h2>
+                <p>Придружете се на мала заедница на свесни патници кои го истражуваат дивото срце на Малешево.</p>
+                <div class="newsletter-wrap">
+                    <input type="email" placeholder="Вашата е-пошта">
+                    <button>ПРИКЛУЧИ СЕ</button>
+                </div>
+            </div>
+            <div class="footer-links-col">
+                <h4>ИСТРАЖИ</h4>
+                <ul>
+                    <li><a href="#">Атракции</a></li>
+                    <li><a href="#">Историја</a></li>
+                    <li><a href="#">Галерија</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <h4>ПРАКТИЧНО</h4>
+                <ul>
+                    <li><a href="#">Инфо центар</a></li>
+                    <li><a href="#">Состојба на патеки</a></li>
+                    <li><a href="#">Итно: 112</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

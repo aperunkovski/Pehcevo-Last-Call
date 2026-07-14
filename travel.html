@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Како да стигнете - Пехчево</title>
+    <!-- Премиум фонтови -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Leaflet Карта CSS за интерактивната мапа -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-cream">
+
+    <!-- НАВИГАЦИЈА -->
+  <nav class="navbar">
+        <div class="logo">Pehčevo.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">ДОМА</a></li>
+            <li><a href="atrakcii.html">АТРАКЦИИ</a></li>
+            <li><a href="history.html">ИСТОРИЈА</a></li>
+            <li><a href="gallery.html">ГАЛЕРИЈА</a></li>
+            <li><a href="visitplan.html" class="active">ПЛАНИРАЈ ПОСЕТА <small>▼</small></a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="lang-selector"><b>MK</b> · EN</span>
+            <a href="#" class="btn-nav-cta">ПЛАНИРАЈ</a>
+        </div>
+    </nav>
+
+
+    <!-- ХЕРО СЕКЦИЈА -->
+    <header class="travel-hero">
+        <div class="container-fluid-travel">
+            <span class="section-tag">КАКО ДА СТИГНЕТЕ</span>
+            <h1 class="editorial-title">Патувањето до <i>Пехчево.</i></h1>
+            <p class="editorial-subtitle">Пехчево е сместено во источна Северна Македонија, лесно достапно од главните регионални градови. Изберете како да пристигнете.</p>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЈА 1: ТРИТЕ ГЛАВНИ РУТИ -->
+    <section class="section-routes">
+        <div class="routes-grid">
+            
+            <!-- Од Скопје -->
+            <div class="route-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3>Од Скопје</h3>
+                <div class="route-info-row">
+                    <span class="label">Време</span>
+                    <span class="val">2ч 45м</span>
+                </div>
+                <div class="route-info-row">
+                    <span class="label">Растојание</span>
+                    <span class="val">180 км</span>
+                </div>
+                <div class="route-info-row">
+                    <span class="label">Преку</span>
+                    <span class="val font-code">А3 / М-6</span>
+                </div>
+            </div>
+
+            <!-- Од Софија -->
+            <div class="route-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3>Од Софија</h3>
+                <div class="route-info-row">
+                    <span class="label">Време</span>
+                    <span class="val">2ч 30м</span>
+                </div>
+                <div class="route-info-row">
+                    <span class="label">Растојание</span>
+                    <span class="val">165 км</span>
+                </div>
+                <div class="route-info-row">
+                    <span class="label">Преку</span>
+                    <span class="val font-code">А3 - Delčevo</span>
+                </div>
+            </div>
+
+            <!-- Од Солун -->
+            <div class="route-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3>Од Солун</h3>
+                <div class="route-info-row">
+                    <span class="label">Време</span>
+                    <span class="val">3ч 00м</span>
+                </div>
+                <div class="route-info-row">
+                    <span class="label">Растојание</span>
+                    <span class="val">205 км</span>
+                </div>
+                <div class="route-info-row">
+                    <span class="label">Преку</span>
+                    <span class="val font-code">А1 - Strumica</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- СЕКЦИЈА 2: МАПА СО РУТИ И GOOGLE MAPS КОПЧЕ -->
+    <section class="section-travel-map">
+        <div class="map-container-wrap">
+            <div class="map-header">
+                <span class="section-tag-light">МАР</span>
+                <h2>Интерактивна мапа на регионот со означени рути.</h2>
+            </div>
+            
+            <div class="map-wrapper">
+                <!-- Картата -->
+                <div id="route-map"></div>
+                
+                <!-- Премиум Пловечко Копче за Google Maps Навигација -->
+                <a href="https://www.google.com/maps/search/?api=1&query=Pehcevo" target="_blank" rel="noopener" class="btn-google-maps">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+                    ОТВОРИ ВО GOOGLE MAPS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЈА 3: ДОПОЛНИТЕЛНИ ОПЦИИ ЗА ТРАНСПОРТ -->
+    <section class="section-transport-details">
+        <div class="transport-grid">
+            
+            <!-- Возење -->
+            <div class="transport-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <h3>Возење</h3>
+                <p>Well-paved regional roads through the Osogovo-Maleshevo range. Rental cars from Skopje or Sofia are the most flexible option.</p>
+            </div>
+
+            <!-- Автобус -->
+            <div class="transport-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                </div>
+                <h3>Автобус</h3>
+                <p>Daily coaches from Skopje (via Kočani / Delčevo) and Sofia. Local marshrutka connections from Berovo year-round.</p>
+            </div>
+
+            <!-- Аеродроми -->
+            <div class="transport-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <h3>Airports</h3>
+                <p>Skopje International (SKP) — 180 km. Sofia (SOF) — 165 km. Both offer major European connections and easy transfers.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container-fluid-travel footer-grid">
+            <div class="footer-left">
+                <h2>Спремни да дишете<br><i>длабоко?</i></h2>
+                <p>Придружете се на мала заедница на свесни патници кои го истражуваат дивото срце на Малешево.</p>
+                <div class="newsletter-wrap">
+                    <input type="email" placeholder="Вашата е-пошта">
+                    <button>ПРИКЛУЧИ СЕ</button>
+                </div>
+            </div>
+            <div class="footer-links-col">
+                <h4>ИСТРАЖИ</h4>
+                <ul>
+                    <li><a href="atrakcii.html">Атракции</a></li>
+                    <li><a href="history.html">Историја</a></li>
+                    <li><a href="gallery.html">Галерија</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <h4>ПРАКТИЧНО</h4>
+                <ul>
+                    <li><a href="#">Инфо центар</a></li>
+                    <li><a href="#">Состојба на патеки</a></li>
+                    <li><a href="#">Итно: 112</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet Карта JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
